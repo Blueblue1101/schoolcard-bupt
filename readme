@@ -1,0 +1,13 @@
+schoolcard1.0：完成了复刻校园卡。
+schoolcard3.0：在复刻校园卡的基础上，添加了3d视差悬停和翻转效果。
+
+
+
+参考资料：
+1、https://juejin.cn/post/7126369893930237989
+2、https://codepen.io/desandro/pen/LmWoWe?__cf_chl_captcha_tk__=nD6UghvfHZPiFDI7tJBg1A3D2V9_C9V8Sol5A6bvZ4A-1639388162-0-gaNycGzNB30
+
+
+跨浏览器测试：
+已测试google，edge，华为浏览器。
+已测试浏览器缩放，均可以显示成功。

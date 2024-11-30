@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>学生卡</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card {
+            width: 500px;
+            height: 309px;
+            border-radius: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            background-color: white;
+            object-fit: cover;
+        }
+
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background-image: linear-gradient(to bottom, #438cdb, transparent);
+            border-top-left-radius: 25px;
+            border-top-right-radius: 25px;
+            z-index: 1;
+        }
+        .logo {
+            position: absolute;
+            top: 25px;
+            left: 288px;
+            z-index: 3;
+        }
+
+        .logo img {
+            width: 198px; /* 调整 logo 图片的大小 */
+            height: 56px ;
+            z-index: 3;
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+        @font-face {
+            font-family: xiyuan;
+            src: url(./font/方正细圆简体.ttf);
+        }
+        @font-face {
+            font-family: alibaba;
+            src: url(./font/Alibaba-PuHuiTi-Medium.ttf);
+        }
+        .name {
+            position: absolute;
+            top: 80px;
+            left: 190px;
+        }
+        .type {
+            position: absolute;
+            top: 120px;
+            left: 190px;
+        }
+        .id {
+            position: absolute;
+            top: 160px;
+            left: 190px; 
+        }
+        .id h2,type h2,name h2 {
+            font-family: alibaba;
+            
+        }
+        .card-content ul {
+            position: absolute;
+            left: 15px;
+            top: 240px;
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .card-content li{
+            font-family: 'xiyuan';
+            font-size: 12px;
+            font-weight: 550;
+
+        }
+
+        .photo-frame {
+            position: absolute;
+            float: left;
+            left: 49px;
+            top:90px;
+            z-index: 3;
+        }
+
+        .photo-frame img {
+            width: 100px;
+            height: 135px;
+            object-fit: cover;
+        }
+        .card1 {
+            width: 500px;
+            height: 309px;
+            border-radius: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            background-color: white;
+            z-index: 2;
+            position: relative;
+        }
+        .card1 img  {
+            width: 500px;
+            height: 309px;
+            object-fit: cover;
+        }
+        .logo1 {
+            position: absolute;
+            top: 25px;
+            left: 13px;
+        }
+        .logo1 img {
+            width: 198px; /* 调整 logo 图片的大小 */
+            height: 56px;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="header"></div>
+        <div class="logo" >
+            <img src="school_logo1.png" alt="Logo">
+        </div>
+        <div class="card-content">
+            <div class="photo-frame">
+                <img src="photo.jpg" alt="Photo">
+            </div>
+
+            <div class="name">
+                <h2>姓  名：王婉婷</h2>
+            </div>
+
+            <div class="type">
+                <h2>类  别：本科生</h2>
+            </div>
+
+            <div class="id">
+                <h2>学  号：2022211620</h2>
+            </div>
+
+            <ul>
+                <li>1、“北邮通”校园卡仅限本人使用，请勿弯折、打孔以免损坏卡片；</li>
+                <li>2、若卡遗失，请及时通过移动端应用、网站、自助服务机等方式挂失;</li>
+                <li>3、解挂失请至各校区卡务中心办理，“北邮通”网站ecard.bupt.edu.cn。</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card1">
+        <img src="bg.jpg" alt="Student Card Back">
+        <div class="logo1" >
+            <img src="school_logo1.png" alt="Logo">
+        </div>
+    </div>
+</body>
+</html>

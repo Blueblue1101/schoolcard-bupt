@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>学生卡</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .container {
+            padding: 60px;
+            height: 309px;
+            width: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .parallax {
+            --maxRotate: 15;
+            aspect-ratio: 631/383;
+            perspective: 1200px;
+            max-height: 100%;
+}
+
+        .parallax cardface {
+            position: absolute;
+            left: -5%;
+            top: -5%;
+            width: 110%;
+            height: 110%;
+            display: block;
+            transition: 300ms ease-out;
+            transform: translate3d(calc(var(--parallaxOffset) * var(--rotateY) / var(--maxRotate) * 1%),
+            calc(var(--parallaxOffset) * var(--rotateX) / var(--maxRotate) * -1%), 0);
+            pointer-events: none;
+}
+
+        .parallax-rotator {
+            position: relative;
+            transition: 300ms ease-out;
+            transform: rotateX(calc(var(--rotateX) * 1deg)) rotateY(calc(var(--rotateY) * 1deg));
+}
+
+
+        .parallax-shadow {
+            background: #31476a;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            filter: blur(50px);
+            transform: scale(1.05);
+            position: absolute;
+            display: block;
+            z-index: -1;
+}
+
+        .parallax-highlight {
+            left: -50%;
+            top: -50%;
+            width: 200%;
+            height: 200%;
+            position: absolute;
+            background-image: radial-gradient(circle at 50%, rgba(255, 255, 255, 0.25), transparent 50%);
+            z-index: 100;
+            transform: translate3d(calc(var(--rotateY) / var(--maxRotate) * -25%), calc(var(--rotateX) / var(--maxRotate) * -25%), 0px);
+            transition: 300ms ease-out;
+}
+        .scene{
+            width: 500px;
+            height: 309px;
+            perspective: 600px;
+        }
+        .card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition: transform 1s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+        .cardface{
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;  
+        }
+
+        .cardfront {
+            width: 500px;
+            height: 309px;
+            border-radius: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: absolute;
+            background-color: white;
+            object-fit: cover;
+        }
+
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background-image: linear-gradient(to bottom, #438cdb, transparent);
+            border-top-left-radius: 25px;
+            border-top-right-radius: 25px;
+            z-index: 1;
+        }
+        .logo {
+            position: absolute;
+            top: 25px;
+            left: 288px;
+            z-index: 3;
+        }
+
+        .logo img {
+            width: 198px; /* 调整 logo 图片的大小 */
+            height: 56px ;
+            z-index: 3;
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+        @font-face {
+            font-family: xiyuan;
+            src: url(./font/方正细圆简体.ttf);
+        }
+        @font-face {
+            font-family: alibaba;
+            src: url(./font/Alibaba-PuHuiTi-Medium.ttf);
+        }
+        .name {
+            position: absolute;
+            top: 80px;
+            left: 190px;
+        }
+        .type {
+            position: absolute;
+            top: 120px;
+            left: 190px;
+        }
+        .id {
+            position: absolute;
+            top: 160px;
+            left: 190px; 
+        }
+        .id h2,type h2,name h2 {
+            font-family: alibaba;
+            
+        }
+        .card-content ul {
+            position: absolute;
+            left: 15px;
+            top: 240px;
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .card-content li{
+            font-family: 'xiyuan';
+            font-size: 12px;
+            font-weight: 550;
+
+        }
+
+        .photo-frame {
+            position: absolute;
+            float: left;
+            left: 49px;
+            top:90px;
+            z-index: 3;
+        }
+
+        .photo-frame img {
+            width: 100px;
+            height: 135px;
+            object-fit: cover;
+        }
+        .cardback {
+            width: 500px;
+            height: 309px;
+            border-radius: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            background-color: white;
+            z-index: 2;
+            position:absolute;
+            transform: rotateY( 180deg );
+        }
+        .cardback img  {
+            width: 500px;
+            height: 309px;
+            object-fit: cover;
+        }
+        .logo1 {
+            position: absolute;
+            top: 25px;
+            left: 13px;
+        }
+        .logo1 img {
+            width: 198px; /* 调整 logo 图片的大小 */
+            height: 56px;
+        }
+        .card.is-flipped {
+            transform: rotateY(180deg);
+        }
+        .parallax-rotator {
+            position: relative;
+            transition: 300ms ease-out;
+            transform: rotateX(calc(var(--rotateX) * 1deg)) rotateY(calc(var(--rotateY) * 1deg));
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="parallax">
+            <div class="parallax-rotator">
+                <div class="parallax-inner">
+                    <div class="scene">
+                        <div class="card">
+                            <div class="cardface cardfront">
+                                <div class="header"></div>
+                        
+                                <div class="logo" >
+                                    <img src="school_logo1.png" alt="Logo">
+                                </div>
+                        
+                                <div class="card-content">
+                                    <div class="photo-frame">
+                                        <img src="photo.jpg" alt="Photo">
+                                    </div>
+                        
+                                    <div class="name">
+                                        <h2>姓  名：王婉婷</h2>
+                                    </div>
+                        
+                                    <div class="type">
+                                        <h2>类  别：本科生</h2>
+                                    </div>
+                        
+                                    <div class="id">
+                                        <h2>学  号：2022211620</h2>
+                                    </div>
+                        
+                                    <ul>
+                                        <li>1、“北邮通”校园卡仅限本人使用，请勿弯折、打孔以免损坏卡片；</li>
+                                        <li>2、若卡遗失，请及时通过移动端应用、网站、自助服务机等方式挂失;</li>
+                                        <li>3、解挂失请至各校区卡务中心办理，“北邮通”网站ecard.bupt.edu.cn。</li>
+                                    </ul>
+                                </div>
+                        
+                            </div>
+                        
+                            <div class="cardface cardback">
+                                <img src="bg.jpg" alt="Student Card Back">
+                        
+                                <div class="logo1" >
+                                    <img src="school_logo1.png" alt="Logo">
+                                </div>
+                        
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="parallax-shadow"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div>
+        <h1>
+            请在卡上随意移动你的鼠标，点击翻转哦~
+        </h1>
+    </div>
+</body>
+</html>
+
+<script>
+   var card = document.querySelector('.card');
+card.addEventListener( 'click', function() {
+  card.classList.toggle('is-flipped');
+});
+
+document.querySelector('.parallax')?.addEventListener('mousemove', function (e) {
+  const { clientX, clientY } = e
+
+  
+  const computedStyle = getComputedStyle(this)
+  const maxRotate = computedStyle.getPropertyValue('--maxRotate')
+
+  const { width, height, left, top } = this.getBoundingClientRect();
+
+  const centerX = width / 2;
+  const centerY = height / 2;
+  const offsetX = clientX - left
+  const offsetY = clientY - top
+
+ 
+  let rotateX = (maxRotate * (offsetY - centerY)) / (centerY) * -1;
+  let rotateY = (maxRotate * (offsetX - centerX)) / (centerX);
+ 
+  this.style.setProperty('--rotateX', rotateX);
+  this.style.setProperty('--rotateY', rotateY);
+})
+
+document.querySelector('.parallax')?.addEventListener('mouseleave', function (e) {
+  this.style.setProperty('--rotateX', 0);
+  this.style.setProperty('--rotateY', 0);
+})
+  </script>
+  
